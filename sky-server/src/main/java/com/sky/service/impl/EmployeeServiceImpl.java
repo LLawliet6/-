@@ -91,4 +91,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         return new PageResult(total,records);
     }
 
+    @Override
+    public void update(Employee emp) {
+        employeeMapper.update(emp);
+    }
+
 }
