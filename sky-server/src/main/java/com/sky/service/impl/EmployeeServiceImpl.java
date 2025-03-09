@@ -96,4 +96,21 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeMapper.update(emp);
     }
 
+    @Override
+    public Employee getById(Long id) {
+        Employee employee = employeeMapper.getById(id);
+        employee.setPassword("");
+        return employee;
+
+    }
+
+    @Override
+    public void update(EmployeeDTO emp) {
+        Employee employee = new Employee();
+        BeanUtils.copyProperties(emp,employee);
+        employee.setUpdateTime(LocalDateTime.now());
+        employee.setUpdateUser(BaseContext.getCurrentId());
+        employeeMapper.update(employee);
+    }
+
 }
